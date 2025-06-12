@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Digital Buddy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fbeec1;
+      text-align: center;
+      padding: 30px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px #ccc;
+    }
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    h2 {
+      color: #2d3436;
+    }
+    p {
+      color: #636e72;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      background: #6c5ce7;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #341f97;
+    }
+    #secret {
+      margin-top: 15px;
+      color: #d63031;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <img src="elonmusk.png" alt="Elon Musk">
+    <h2>Hey, I'm Elon 🤖</h2>
+    <p>Your virtual space & tech buddy.</p>
+    <p>I like rockets, memes, and changing the future 🚀.</p>
+    <button onclick="showSecret()">Tell Me a Secret</button>
+    <p id="secret"></p>
+    <p><a href="https://linkedin.com" target="_blank">Meet my creator →</a></p>
+  </div>
+
+  <script>
+    function showSecret() {
+      const facts = [
+        "I sometimes sleep in the factory.",
+        "I’m building a colony on Mars. Wanna join?",
+        "I founded PayPal, Tesla, SpaceX, and more!",
+        "My tweets move markets. 📈📉",
+        "I once sold flamethrowers for fun."
+      ];
+      let randomFact = facts[Math.floor(Math.random() * facts.length)];
+      document.getElementById("secret").innerText = randomFact;
+    }
+  </script>
+
+</body>
+</html>
