@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vivek Bojjagani | Full Page Portfolio</title>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #000;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+      background-color: #111;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      color: #f48fb1;
+    }
+    nav {
+      background: #111;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #f48fb1;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      border-bottom: 1px solid #333;
+    }
+    h2 {
+      color: #f48fb1;
+    }
+    .profile-img {
+      width: 120px;
+      border-radius: 50%;
+      display: block;
+      margin: 20px auto;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #f48fb1;
+      color: black;
+      cursor: pointer;
+    }
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      background: #222;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 3px #555;
+      color: #eee;
+      font-size: 16px;
+    }
+    .product-name {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .product-price {
+      color: #80cbc4;
+      margin-top: 5px;
+    }
+    .actions button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Vivek's Portfolio</h1>
+  </header>
+
+  <nav>
+    <a href="#about">👨‍💻 About</a>
+    <a href="#todo">📝 To-Do</a>
+    <a href="#products">🛒 Products</a>
+    <a href="#contact">📞 Contact</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <img src="space-avatar.jpg" alt="Profile" class="profile-img">
+    <h2>About Me</h2>
+    <p>Hello! I'm <strong>Vivek Bojjagani</strong>, a B.Tech student at Lakireddy Bali Reddy College of Engineering. I'm passionate about web development and building cool things with HTML, CSS, and JavaScript.</p>
+
+    <h2>Projects</h2>
+
+    <div>
+      <h3 style="color: #f06292;">📌 Dino Quiz App</h3>
+      <p>A fun, interactive dinosaur-themed quiz game built with HTML, CSS, and JavaScript.</p>
+    </div>
+
+    <div>
+      <h3 style="color: #f06292;">📌 To-Do Manager</h3>
+      <p>A simple task management app that allows users to add, edit, complete, and delete tasks with persistence using localStorage.</p>
+    </div>
+
+    <div>
+      <h3 style="color: #f06292;">📌 Product Filter Page</h3>
+      <p>A responsive page where users can filter and sort products by category and price using dropdowns.</p>
+    </div>
+  </section>
+
+  <!-- To-Do Section -->
+  <section id="todo">
+    <h2>My To-Do List</h2>
+    <input type="text" id="todoInput" placeholder="Add a new task...">
+    <button onclick="addTodo()">Add Task</button>
+    <ul id="todoList"></ul>
+  </section>
+
+  <!-- Product Section -->
+  <section id="products">
+    <h2>Product Listing</h2>
+    <select id="categoryFilter" onchange="renderProducts()">
+      <option value="all">All Categories</option>
+      <option value="tech">Tech</option>
+      <option value="fashion">Fashion</option>
+    </select>
+
+    <select id="sortPrice" onchange="renderProducts()">
+      <option value="default">Sort by</option>
+      <option value="asc">Price: Low to High</option>
+      <option value="desc">Price: High to Low</option>
+    </select>
+
+    <div class="product-grid" id="productList"></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:bojjaganivivek5@gmail.com" style="color: #f48fb1;">bojjaganivivek5@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/vivek-bojjagani-552314259/" target="_blank" style="color: #f48fb1;">linkedin.com/in/bvivek05</a></p>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // To-Do List Logic
+    let todos = JSON.parse(localStorage.getItem("todos") || "[]");
+
+    function saveTodos() {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    function renderTodos() {
+      const list = document.getElementById("todoList");
+      list.innerHTML = "";
+      todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = todo.text;
+        if (todo.completed) span.classList.add("completed");
+        span.onclick = () => {
+          todo.completed = !todo.completed;
+          saveTodos();
+          renderTodos();
+        };
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "✏️";
+        editBtn.onclick = () => {
+          const newText = prompt("Edit task:", todo.text);
+          if (newText) {
+            todo.text = newText.trim();
+            saveTodos();
+            renderTodos();
+          }
+        };
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "🗑️";
+        deleteBtn.onclick = () => {
+          todos.splice(index, 1);
+          saveTodos();
+          renderTodos();
+        };
+
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+
+        li.appendChild(span);
+        li.appendChild(actions);
+        list.appendChild(li);
+      });
+    }
+
+    function addTodo() {
+      const input = document.getElementById("todoInput");
+      if (input.value.trim()) {
+        todos.push({ text: input.value.trim(), completed: false });
+        saveTodos();
+        input.value = "";
+        renderTodos();
+      }
+    }
+
+    renderTodos();
+
+    // Product Listing Logic
+    const products = [
+      { name: "Smartwatch", price: 2500, category: "tech" },
+      { name: "Jeans", price: 800, category: "fashion" },
+      { name: "Bluetooth Earbuds", price: 1800, category: "tech" },
+      { name: "T-Shirt", price: 400, category: "fashion" }
+    ];
+
+    function renderProducts() {
+      const cat = document.getElementById("categoryFilter").value;
+      const sort = document.getElementById("sortPrice").value;
+
+      let filtered = cat === "all" ? [...products] : products.filter(p => p.category === cat);
+      if (sort === "asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sort === "desc") filtered.sort((a, b) => b.price - a.price);
+
+      const container = document.getElementById("productList");
+      container.innerHTML = "";
+      filtered.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">₹${p.price}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

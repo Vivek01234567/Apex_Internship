@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #fff3e0;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: #ffe0b2;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #e65100;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px #aaa;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      margin-right: 5px;
+      font-size: 16px;
+    }
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    li {
+      background: #f9fbe7;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .actions button {
+      margin-left: 5px;
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">🏠 Portfolio</a>
+    <a href="todo.html">📝 To-Do List</a>
+    <a href="products.html">🛒 Product Page</a>
+  </nav>
+
+  <div class="container">
+    <section>
+      <h2>📝 My To-Do List</h2>
+      <input type="text" id="todoInput" placeholder="Add a new task...">
+      <button onclick="addTodo()">Add Task</button>
+      <ul id="todoList"></ul>
+    </section>
+  </div>
+
+  <script>
+    let todos = JSON.parse(localStorage.getItem("todos") || "[]");
+
+    function saveTodos() {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    function renderTodos() {
+      const list = document.getElementById("todoList");
+      list.innerHTML = "";
+      todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = todo.text;
+        if (todo.completed) span.classList.add("completed");
+        span.onclick = () => {
+          todo.completed = !todo.completed;
+          saveTodos();
+          renderTodos();
+        };
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "✏️";
+        editBtn.onclick = () => {
+          const newText = prompt("Edit task:", todo.text);
+          if (newText !== null && newText.trim() !== "") {
+            todo.text = newText.trim();
+            saveTodos();
+            renderTodos();
+          }
+        };
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "🗑️";
+        deleteBtn.onclick = () => {
+          todos.splice(index, 1);
+          saveTodos();
+          renderTodos();
+        };
+
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+
+        li.appendChild(span);
+        li.appendChild(actions);
+        list.appendChild(li);
+      });
+    }
+
+    function addTodo() {
+      const input = document.getElementById("todoInput");
+      if (input.value.trim()) {
+        todos.push({ text: input.value.trim(), completed: false });
+        saveTodos();
+        input.value = "";
+        renderTodos();
+      }
+    }
+
+    renderTodos();
+  </script>
+
+</body>
+</html>
