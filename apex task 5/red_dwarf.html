@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red Dwarf</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('images/red_dwarf_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+    }
+
+    .image-side {
+      flex: 1;
+      text-align: center;
+    }
+
+    .image-side img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .content-side {
+      flex: 2;
+      padding: 30px;
+      max-width: 700px;
+    }
+
+    .content-side h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .content-side p {
+      font-size: 1.2em;
+      line-height: 1.7;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-side">
+      <img src="images/red_dwarf.jpg" alt="Red Dwarf Star"/>
+    </div>
+    <div class="content-side">
+      <h1>Red Dwarf</h1>
+      <p>
+        Red dwarfs are the most common type of star in the Milky Way galaxy.
+        These small and relatively cool stars burn their fuel very slowly,
+        which gives them lifespans ranging from tens of billions to even trillions of years.
+        They are often not visible to the naked eye from Earth due to their low brightness,
+        but they are abundant in number.
+      </p>
+      <p>
+        Because of their long lives, red dwarfs are key to studying stellar evolution.
+        Some notable red dwarfs include Proxima Centauri, the closest known star to the Sun.
+        Planets orbiting red dwarfs are also considered in the search for extraterrestrial life.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

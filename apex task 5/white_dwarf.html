@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>White Dwarf</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('images/white_dwarf_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+    }
+
+    .image-side {
+      flex: 1;
+      text-align: center;
+    }
+
+    .image-side img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .content-side {
+      flex: 2;
+      padding: 30px;
+      max-width: 700px;
+    }
+
+    .content-side h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .content-side p {
+      font-size: 1.2em;
+      line-height: 1.7;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-side">
+      <img src="images/white_dwarf.jpg" alt="White Dwarf Star"/>
+    </div>
+    <div class="content-side">
+      <h1>White Dwarf</h1>
+      <p>
+        A white dwarf is a stellar core remnant composed mostly of electron-degenerate matter.
+        These remnants form when a star of low to medium mass (up to about 8 solar masses)
+        exhausts its nuclear fuel and expels its outer layers as a planetary nebula.
+      </p>
+      <p>
+        White dwarfs are incredibly dense: one teaspoon of white dwarf material would weigh
+        tons on Earth. They no longer undergo fusion but remain hot and glow for billions of years
+        before gradually cooling into a black dwarf — a process longer than the current age of the universe.
+      </p>
+      <p>
+        Sirius B, the companion of the bright star Sirius, is one of the most well-known white dwarfs.
+        These stars provide critical clues in understanding stellar evolution and the future of our Sun.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

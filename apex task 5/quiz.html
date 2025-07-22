@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Astronomy Quiz</title>
+  <style>
+    body {
+      background: url('images/stars_bg.jpg'); /* Ensure image is in same folder */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    .question h2 {
+      font-size: 1.3em;
+    }
+    .options {
+      list-style-type: none;
+      padding: 0;
+    }
+    .options li {
+      margin: 10px 0;
+    }
+    button {
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0097a7;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: #00ff99;
+    }
+    .wrong {
+      color: #ff6666;
+    }
+    .explanation {
+      font-size: 0.95em;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Astronomy Quiz</h1>
+  <div class="quiz-container">
+
+    <div class="question" id="q1">
+      <h2>1. What is the outermost region of our Solar System called?</h2>
+      <ul class="options">
+        <li><button onclick="checkAnswer(this, 'q1', 'b')">a) Asteroid Belt</button></li>
+        <li><button onclick="checkAnswer(this, 'q1', 'b')">b) Heliopause</button></li>
+        <li><button onclick="checkAnswer(this, 'q1', 'b')">c) Kuiper Belt</button></li>
+        <li><button onclick="checkAnswer(this, 'q1', 'b')">d) Oort Cloud</button></li>
+      </ul>
+      <div class="feedback" id="q1-feedback"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <h2>2. What is a Red Dwarf star known for?</h2>
+      <ul class="options">
+        <li><button onclick="checkAnswer(this, 'q2', 'a')">a) Low mass, long life</button></li>
+        <li><button onclick="checkAnswer(this, 'q2', 'a')">b) High brightness</button></li>
+        <li><button onclick="checkAnswer(this, 'q2', 'a')">c) Large size</button></li>
+        <li><button onclick="checkAnswer(this, 'q2', 'a')">d) High temperature</button></li>
+      </ul>
+      <div class="feedback" id="q2-feedback"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <h2>3. Which planet has the most moons?</h2>
+      <ul class="options">
+        <li><button onclick="checkAnswer(this, 'q3', 'c')">a) Earth</button></li>
+        <li><button onclick="checkAnswer(this, 'q3', 'c')">b) Mars</button></li>
+        <li><button onclick="checkAnswer(this, 'q3', 'c')">c) Saturn</button></li>
+        <li><button onclick="checkAnswer(this, 'q3', 'c')">d) Jupiter</button></li>
+      </ul>
+      <div class="feedback" id="q3-feedback"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const explanations = {
+      q1: {
+        correct: "✅ Correct! The heliopause marks the outer boundary of the heliosphere.",
+        wrong: "❌ Not quite. The heliopause is the correct answer—it’s where the Sun’s solar wind pressure balances with interstellar space."
+      },
+      q2: {
+        correct: "✅ Correct! Red dwarfs are small, cool stars that can live for trillions of years.",
+        wrong: "❌ Nope. Red dwarfs have low mass and are very stable, not large or very hot."
+      },
+      q3: {
+        correct: "✅ Correct! Saturn currently holds the record for the most confirmed moons.",
+        wrong: "❌ Incorrect. While Jupiter has many moons, Saturn slightly leads with over 80 confirmed moons."
+      }
+    };
+
+    function checkAnswer(button, questionId, correctOption) {
+      const buttons = document.querySelectorAll(`#${questionId} button`);
+      buttons.forEach(btn => btn.disabled = true); // disable all after click
+
+      const answerLetter = button.textContent.trim().charAt(0);
+      const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+      if (answerLetter.toLowerCase() === correctOption) {
+        feedbackDiv.innerHTML = `<div class="correct">${explanations[questionId].correct}</div>`;
+      } else {
+        feedbackDiv.innerHTML = `<div class="wrong">${explanations[questionId].wrong}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>

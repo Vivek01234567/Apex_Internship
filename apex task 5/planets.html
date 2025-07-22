@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore the Planets</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('images/index_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffcc00;
+    }
+
+    section {
+      padding: 100px 40px 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.5);
+      margin: 40px auto;
+      max-width: 1000px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #ffd700;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#sun">☀️ Sun</a>
+    <a href="#inner">🌍 Inner Planets</a>
+    <a href="#outer">🪐 Outer Planets</a>
+    <a href="#kuiper">❄️ Kuiper Belt</a>
+    <a href="#heliopause">🌌 Heliopause</a>
+  </nav>
+
+  <section id="sun">
+    <h1>☀️ The Sun</h1>
+    <p>
+      The Sun is the heart of our solar system, a massive ball of plasma that provides light and heat. It's the most important source of energy for life on Earth and drives the solar wind that forms the heliosphere.
+    </p>
+  </section>
+
+  <section id="inner">
+    <h1>🌍 Inner Planets</h1>
+    <p>
+      These include Mercury, Venus, Earth, and Mars. They are terrestrial planets made mostly of rock and metal. Their proximity to the Sun makes them hot and they have fewer moons compared to the outer planets.
+    </p>
+  </section>
+
+  <section id="outer">
+    <h1>🪐 Outer Planets</h1>
+    <p>
+      Jupiter, Saturn, Uranus, and Neptune are the outer giants. The gas giants (Jupiter & Saturn) and ice giants (Uranus & Neptune) are known for their large size, rings, and numerous moons.
+    </p>
+  </section>
+
+  <section id="kuiper">
+    <h1>❄️ Kuiper Belt</h1>
+    <p>
+      Located beyond Neptune, this region holds many icy bodies including dwarf planets like Pluto. It's a source of many comets and marks the beginning of the edge of our solar system.
+    </p>
+  </section>
+
+  <section id="heliopause">
+    <h1>🌌 Heliopause</h1>
+    <p>
+      The heliopause is where the solar wind slows down and finally stops, meeting the interstellar medium. It's considered the boundary of our solar system and marks the beginning of true interstellar space.
+    </p>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make body full screen with background */
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', sans-serif;
+
+  /* Background Image */
+  background-image: url('../images/index_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /* Center content using Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  color: white;
+}
+
+/* Main content container */
+.homepage-container {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Headline */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Paragraph */
+p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+/* Navigation */
+nav a {
+  color: #00ffff;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+/* Add this at the bottom of styles.css */
+
+.stars-page {
+  background-image: url('../images/stars_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}

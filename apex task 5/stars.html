@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Types of Stars</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('images/stars_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    .star-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .star-block {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      padding: 30px;
+      width: 200px;
+      cursor: pointer;
+      border-radius: 15px;
+      transition: 0.3s ease;
+    }
+
+    .star-block:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .star-block h2 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Explore the Types of Stars</h1>
+  <div class="star-grid">
+    <div class="star-block" onclick="location.href='red_dwarf.html'">
+      <h2>Red Dwarf</h2>
+    </div>
+    <div class="star-block" onclick="location.href='white_dwarf.html'">
+      <h2>White Dwarf</h2>
+    </div>
+    <div class="star-block" onclick="location.href='neutron_star.html'">
+      <h2>Neutron Star</h2>
+    </div>
+    <div class="star-block" onclick="location.href='blue_giant.html'">
+      <h2>Blue Giant</h2>
+    </div>
+    <div class="star-block" onclick="location.href='supergiant.html'">
+      <h2>Supergiant</h2>
+    </div>
+  </div>
+</body>
+</html>
